@@ -20,6 +20,8 @@ RUN npm update && npm i -g \
 	npm-check-updates@${NCU_VERSION} \
 	&& rm -rf ~/.npm
 
+COPY npm.sh /etc/entrypoint.d/
+
 # interactivity
 #
 RUN apk --update --no-cache add \
