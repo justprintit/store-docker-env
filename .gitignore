@@ -1,2 +1,9 @@
 /.docker-run-cache
+
+# go
 /pkg
+
+# npm
+node_modules
+package-lock.json
+npm-shrinkwrap.json
