@@ -25,4 +25,5 @@ COPY npm.sh /etc/entrypoint.d/
 # interactivity
 #
 RUN apk --update --no-cache add \
-	bash
+	bash \
+	mandoc
