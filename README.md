@@ -27,3 +27,7 @@ or executing via `x`
 ```
 ~/somewhere: x make run
 ```
+
+## Customizing
+
+Key variables are defined by `config.mk` which shall remain sh and `make` compatible

@@ -2,14 +2,16 @@
 
 all: build
 
-# customization
+# load customizations
 #
+include config.mk
+
 MAIN_MODULE ?= github.com/amery/go-webpack-starter
 EXTRA_MODULES ?=
+MODULES = $(MAIN_MODULE) $(subst :, ,$(EXTRA_MODULES))
 
 SERVER_PORT ?= 8080
-
-MODULES = $(MAIN_MODULE) $(EXTRA_MODULES)
+GODOC_PORT ?= 9090
 
 # clean
 #
