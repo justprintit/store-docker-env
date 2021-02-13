@@ -1,4 +1,4 @@
-.PHONY: all clean fmt build dev run pull
+.PHONY: all clean fmt build dev run pull doc
 
 all: build
 
@@ -53,3 +53,11 @@ run:
 pull:
 	sed -n -e 's|^[ \t]*FROM[ \t]\+\([^ ]\+\)[^ \t]*$$|\1|p' $(CURDIR)/docker/Dockerfile \
 		| xargs -rt docker pull
+
+# doc
+#
+doc:
+	which godoc > /dev/null || go get golang.org/x/tools/cmd/godoc
+	nohup godoc -http=:$(GODOC_PORT) \
+		-analysis=type -analysis=pointer \
+		-index -links=true > /dev/null &
