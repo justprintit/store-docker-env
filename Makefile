@@ -23,9 +23,9 @@ clean:
 # fmt
 #
 fmt:
-	@find $(addprefix src/, $(MODULES)) -name '*.go' \
+	find $(addprefix src/, $(MODULES)) -name '*.go' \
 		| sed -e 's|/[^/]\+\.go$$||' -e 's|^src/||' \
-		| sort -uV | xargs -rt go fmt -x
+		| sort -uV | xargs -r go fmt
 
 # build
 #
