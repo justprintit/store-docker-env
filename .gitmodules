@@ -1,3 +1,6 @@
 [submodule "src/github.com/amery/go-webpack-starter"]
 	path = src/github.com/amery/go-webpack-starter
 	url = https://github.com/amery/go-webpack-starter.git
+[submodule "src/github.com/amery/file2go"]
+	path = src/github.com/amery/file2go
+	url = https://github.com/amery/file2go.git
