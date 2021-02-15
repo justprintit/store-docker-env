@@ -27,11 +27,17 @@ if ! set | grep -q "^DOCKER_EXPOSE=\(''\)\?$"; then
 	esac
 
 	for x in $DOCKER_EXPOSE; do
-		export DOCKER_EXTRA_OPTS="${DOCKER_EXTRA_OPTS:+$DOCKER_EXTRA_OPTS }-p $x:$x/tcp"
-	done
-fi
 
-unset DOCKER_EXPOSE
-export -n DOCKER_EXPOSE
+		case "$x" in
+		*:*/*)	;;
+		*/*)	x="${x%/*}:$x" ;;
+		*)	x="$x:$x/tcp" ;;
+		esac
+
+		export DOCKER_EXTRA_OPTS="${DOCKER_EXTRA_OPTS:+$DOCKER_EXTRA_OPTS }-p $x"
+	done
+
+	export DOCKER_EXPOSE=
+fi
 
 exec docker-builder-run "$@"
