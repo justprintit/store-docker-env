@@ -21,4 +21,5 @@ COPY npm.sh /etc/entrypoint.d/
 #
 RUN apk --update --no-cache add \
 	bash \
-	mandoc
+	mandoc \
+	tmux
