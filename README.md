@@ -28,11 +28,15 @@ or executing via `x`
 ~/somewhere: x make run
 ```
 
+## Authentication
+
+For git credentials use `.docker-run-cache/home/${USER}/.netrc` and make sure it's set to `0600`.
+
 ## Customizing
 
 Key variables are defined by `config.mk` which shall remain sh and `make` compatible
 
-## Exposing Ports
+### Exposing Ports
 
 By default `x` will expose `SERVER_PORT` and `GODOC_PORT` as defined by `config.mk`,
 or falling back to 8080 and 9090 correspondingly if undefined.
