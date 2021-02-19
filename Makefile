@@ -29,18 +29,8 @@ fmt:
 
 # build
 #
-.PHONY: npm-build go-generate go-build
-
-build: npm-build go-generate go-build
-
-npm-build:
-	cd src/$(MAIN_MODULE); npm run build
-
-go-build:
-	go get -v $(MAIN_MODULE)/...
-
-go-generate:
-	$(MAKE) -C src/$(MAIN_MODULE) go-generate
+build:
+	$(MAKE) -C src/$(MAIN_MODULE) build
 
 # dev (run backend and webpack-dev-server)
 # 
