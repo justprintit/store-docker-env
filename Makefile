@@ -23,8 +23,7 @@ clean:
 #
 fmt:
 	find $(addprefix src/, $(MODULES)) -name '*.go' \
-		| sed -e 's|/[^/]\+\.go$$||' -e 's|^src/||' \
-		| sort -uV | xargs -r go fmt
+		| xargs -r gofmt -l -w
 
 # build
 #
