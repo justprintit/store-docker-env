@@ -60,8 +60,11 @@ pull:
 
 # doc
 #
-doc:
-	which godoc > /dev/null || go get golang.org/x/tools/cmd/godoc
-	nohup godoc -http=:$(GODOC_PORT) \
-		-analysis=type -analysis=pointer \
-		-index -links=true > /dev/null &
+$(GOPATH)/bin/godoc:
+	go get -v golang.org/x/tools/cmd/godoc
+
+doc: $(GOPATH)/bin/godoc
+	@echo "http://127.0.0.1:$(GODOC_PORT)"
+	@cd src/$(MAIN_MODULE) && godoc \
+		-http=:$(GODOC_PORT) \
+		-index -links=true
