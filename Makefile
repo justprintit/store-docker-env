@@ -16,8 +16,7 @@ GODOC_PORT ?= 9090
 # clean
 #
 clean:
-	@cd $(GOPATH); git ls-files -o bin/ pkg/ lib/ | grep -v ^pkg/mod | xargs -rt rm -rf
-	go clean -x -r -modcache $(MODULES)
+	@git ls-files -o bin/ pkg/ lib/ | grep -v ^pkg/mod | xargs -rt rm -rf
 	-$(MAKE) -C src/$(MAIN_MODULE) clean
 
 # fmt
