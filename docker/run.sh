@@ -12,17 +12,38 @@ if ! set | grep -q "^DOCKER_EXPOSE=\(''\)\?$"; then
 	: ${GODOC_PORT:=9090}
 	: ${SERVER_PORT:=8080}
 
+	# server
+	DE1="${DOCKER_EXPOSE:+$DOCKER_EXPOSE }$SERVER_PORT"
+	# all
+	DE2="${DOCKER_EXPOSE:+$DOCKER_EXPOSE }$SERVER_PORT $GODOC_PORT"
+
 	# special cases
 	#
-	case "${1:-} ${2:-}" in
-	"make doc")
-		DOCKER_EXPOSE="$GODOC_PORT"
+	case "${1:-}" in
+	make)
+		case "${2:-}" in
+		doc)     DOCKER_EXPOSE="$GODOC_PORT" ;;
+		run|dev) DOCKER_EXPOSE="$DE1" ;;
+		*)       DOCKER_EXPOSE= ;;
+		esac
 		;;
-	"make run"|"make dev")
-		DOCKER_EXPOSE="${DOCKER_EXPOSE:+$DOCKER_EXPOSE }$SERVER_PORT"
+	npm)
+		case "${2:-}" in
+		start) DOCKER_EXPOSE="$DE1" ;;
+		*)     DOCKER_EXPOSE= ;;
+		esac
+		;;
+	go)
+		case "${2:-}" in
+		run) DOCKER_EXPOSE="$DE1" ;;
+		*)   DOCKER_EXPOSE= ;;
+		esac
+		;;
+	ncu)
+		DOCKER_EXPOSE=
 		;;
 	*)
-		DOCKER_EXPOSE="${DOCKER_EXPOSE:+$DOCKER_EXPOSE }$SERVER_PORT $GODOC_PORT"
+		DOCKER_EXPOSE="$DE2"
 		;;
 	esac
 
