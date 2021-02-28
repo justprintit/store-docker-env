@@ -53,6 +53,6 @@ $(GOPATH)/bin/godoc:
 
 doc: $(GOPATH)/bin/godoc
 	@echo "http://127.0.0.1:$(GODOC_PORT)"
-	@cd src/$(MAIN_MODULE) && godoc \
+	@env GO111MODULE=off godoc \
 		-http=:$(GODOC_PORT) \
 		-index -links=true
