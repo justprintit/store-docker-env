@@ -12,42 +12,37 @@ if ! set | grep -q "^DOCKER_EXPOSE=\(''\)\?$"; then
 	: ${GODOC_PORT:=9090}
 	: ${SERVER_PORT:=8080}
 
-	# server
-	DE1="${DOCKER_EXPOSE:+$DOCKER_EXPOSE }$SERVER_PORT"
-	# all
-	DE2="${DOCKER_EXPOSE:+$DOCKER_EXPOSE }$SERVER_PORT $GODOC_PORT"
+	if [ -z "${DOCKER_EXPOSE:-}" ]; then
 
-	# special cases
-	#
-	case "${1:-}" in
-	make)
-		case "${2:-}" in
-		doc)     DOCKER_EXPOSE="$GODOC_PORT" ;;
-		run|dev) DOCKER_EXPOSE="$DE1" ;;
-		*)       DOCKER_EXPOSE= ;;
+		# special cases
+		#
+		case "${1:-}" in
+		make)
+			case "${2:-}" in
+			doc)     DOCKER_EXPOSE="$GODOC_PORT" ;;
+			run|dev) DOCKER_EXPOSE="$SERVER_PORT" ;;
+			esac
+			;;
+		npm)
+			case "${2:-}" in
+			start) DOCKER_EXPOSE="$SERVER_PORT" ;;
+			esac
+			;;
+		go)
+			case "${2:-}" in
+			run) DOCKER_EXPOSE="$SERVER_PORT" ;;
+			esac
+			;;
+		ncu)
+			;;
+		*)
+			DOCKER_EXPOSE="$SERVER_PORT $GODOC_PORT"
+			;;
 		esac
-		;;
-	npm)
-		case "${2:-}" in
-		start) DOCKER_EXPOSE="$DE1" ;;
-		*)     DOCKER_EXPOSE= ;;
-		esac
-		;;
-	go)
-		case "${2:-}" in
-		run) DOCKER_EXPOSE="$DE1" ;;
-		*)   DOCKER_EXPOSE= ;;
-		esac
-		;;
-	ncu)
-		DOCKER_EXPOSE=
-		;;
-	*)
-		DOCKER_EXPOSE="$DE2"
-		;;
-	esac
 
-	for x in $DOCKER_EXPOSE; do
+	fi
+
+	for x in ${DOCKER_EXPOSE:-}; do
 
 		case "$x" in
 		*:*/*)	;;
