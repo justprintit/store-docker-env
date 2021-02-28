@@ -23,7 +23,7 @@ DOCKER ?= $(shell which docker)
 GO ?= go
 GODOC ?= $(GOBIN)/godoc
 GOFMT ?= gofmt
-GOGET ?= get -v
+GOGET ?= $(GO) get -v
 
 export GOPATH GOBIN GO GODOC GOFMT GOGET
 
