@@ -24,6 +24,7 @@ clean:
 fmt:
 	find $(addprefix src/, $(MODULES)) -name '*.go' \
 		| xargs -r gofmt -l -w
+	-$(MAKE) -C src/$(MAIN_MODULE) fmt
 
 # build
 #
