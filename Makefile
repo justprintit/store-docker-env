@@ -1,4 +1,4 @@
-.PHONY: all clean fmt build dev run pull doc
+.PHONY: all clean fmt build dev run doc
 
 all: build
 
@@ -13,6 +13,20 @@ MODULES = $(MAIN_MODULE) $(subst :, ,$(EXTRA_MODULES))
 SERVER_PORT ?= 8080
 GODOC_PORT ?= 9090
 
+GOPATH := $(CURDIR)
+GOBIN := $(GOPATH)/bin
+
+# tools
+#
+DOCKER ?= $(shell which docker)
+
+GO ?= go
+GODOC ?= $(GOBIN)/godoc
+GOFMT ?= gofmt
+GOGET ?= get -v
+
+export GOPATH GOBIN GO GODOC GOFMT GOGET
+
 # clean
 #
 clean:
@@ -22,8 +36,8 @@ clean:
 # fmt
 #
 fmt:
-	find $(addprefix src/, $(MODULES)) -name '*.go' \
-		| xargs -r gofmt -l -w
+	@find $(addprefix src/, $(MODULES)) -name '*.go' \
+		| xargs -r $(GOFMT) -l -w
 	-$(MAKE) -C src/$(MAIN_MODULE) fmt
 
 # build
@@ -43,17 +57,20 @@ run:
 	
 # pull
 #
+ifneq ($(DOCKER),)
+.PHONY: pull
 pull:
 	sed -n -e 's|^[ \t]*FROM[ \t]\+\([^ ]\+\)[^ \t]*$$|\1|p' $(CURDIR)/docker/Dockerfile \
-		| xargs -rt docker pull
+		| xargs -rt $(DOCKER) pull
+endif
 
 # doc
 #
-$(GOPATH)/bin/godoc:
-	go get -v golang.org/x/tools/cmd/godoc
+$(GODOC):
+	$(GOGET) golang.org/x/tools/cmd/godoc
 
-doc: $(GOPATH)/bin/godoc
+doc: $(GODOC)
 	@echo "http://127.0.0.1:$(GODOC_PORT)"
-	@env GO111MODULE=off godoc \
+	@env GO111MODULE=off $(GODOC) \
 		-http=:$(GODOC_PORT) \
 		-index -links=true
