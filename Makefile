@@ -37,7 +37,7 @@ clean:
 #
 fmt:
 	@find $(addprefix src/, $(MODULES)) -name '*.go' \
-		| xargs -r $(GOFMT) -l -w
+		| xargs -r $(GOFMT) -l -w -s
 	-$(MAKE) -C src/$(MAIN_MODULE) fmt
 
 # build
