@@ -12,3 +12,7 @@
 	path = data
 	url = https://git.jpi.io/amery/justprintit_online-data.git
 	branch = master
+[submodule "src/github.com/justprintit/store"]
+	path = src/github.com/justprintit/store
+	url = ../store
+	branch = v1
