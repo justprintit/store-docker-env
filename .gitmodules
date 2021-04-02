@@ -4,3 +4,6 @@
 [submodule "src/go.sancus.dev/file2go"]
 	path = src/go.sancus.dev/file2go
 	url = ../../sancus-project/file2go.git
+[submodule "src/github.com/justprintit/website"]
+	path = src/github.com/justprintit/website
+	url = ../../justprintit/website
