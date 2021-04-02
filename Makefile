@@ -74,3 +74,10 @@ doc: $(GODOC)
 	@env GO111MODULE=off $(GODOC) \
 		-http=:$(GODOC_PORT) \
 		-index -links=true
+
+# update
+#
+.PHONY: update
+update:
+	git remote update --prune
+	git submodule update --init --remote
