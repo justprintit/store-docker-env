@@ -1,6 +1,6 @@
 [submodule "src/github.com/amery/go-webpack-starter"]
 	path = src/github.com/amery/go-webpack-starter
-	url = ../go-webpack-starter.git
+	url = ../../amery/go-webpack-starter.git
 [submodule "src/go.sancus.dev/file2go"]
 	path = src/go.sancus.dev/file2go
 	url = ../../sancus-project/file2go.git
