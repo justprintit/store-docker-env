@@ -1,9 +1,21 @@
 [submodule "src/github.com/amery/go-webpack-starter"]
 	path = src/github.com/amery/go-webpack-starter
-	url = ../../amery/go-webpack-starter.git
+	url = ../../amery/go-webpack-starter
 [submodule "src/go.sancus.dev/file2go"]
 	path = src/go.sancus.dev/file2go
 	url = ../../sancus-project/file2go.git
 [submodule "src/github.com/justprintit/store"]
 	path = src/github.com/justprintit/store
 	url = ../store
+[submodule "src/go.sancus.dev/cms"]
+	path = src/go.sancus.dev/cms
+	url = ../../sancus-project/cms
+[submodule "src/go.sancus.dev/mix"]
+	path = src/go.sancus.dev/mix
+	url = ../../sancus-project/mix
+[submodule "src/go.sancus.dev/web"]
+	path = src/go.sancus.dev/web
+	url = ../../sancus-project/go-web
+[submodule "src/go.sancus.dev/middleware"]
+	path = src/go.sancus.dev/middleware
+	url = ../../sancus-project/go-middleware
