@@ -25,3 +25,9 @@
 [submodule "src/go.sancus.dev/core"]
 	path = src/go.sancus.dev/core
 	url = ../../sancus-project/go-core
+[submodule "traefik"]
+	path = traefik
+	url = ../docker-compose-traefik
+[submodule "data"]
+	path = data
+	url = https://git.jpi.io/amery/justprintit_online-data.git
