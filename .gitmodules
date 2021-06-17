@@ -19,3 +19,9 @@
 [submodule "src/go.sancus.dev/middleware"]
 	path = src/go.sancus.dev/middleware
 	url = ../../sancus-project/go-middleware
+[submodule "src/go.sancus.dev/sancus"]
+	path = src/go.sancus.dev/sancus
+	url = ../../sancus-project/sancus-golang
+[submodule "src/go.sancus.dev/core"]
+	path = src/go.sancus.dev/core
+	url = ../../sancus-project/go-core
