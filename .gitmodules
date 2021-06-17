@@ -4,3 +4,11 @@
 [submodule "src/go.sancus.dev/file2go"]
 	path = src/go.sancus.dev/file2go
 	url = ../../sancus-project/file2go.git
+[submodule "traefik"]
+	path = traefik
+	url = ../docker-compose-traefik
+	branch = master
+[submodule "data"]
+	path = data
+	url = https://git.jpi.io/amery/justprintit_online-data.git
+	branch = master
