@@ -31,3 +31,6 @@
 [submodule "data"]
 	path = data
 	url = https://git.jpi.io/amery/justprintit_online-data.git
+[submodule "src/github.com/justprintit/mmf"]
+	path = src/github.com/justprintit/mmf
+	url = ../mmf
