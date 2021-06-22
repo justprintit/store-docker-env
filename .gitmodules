@@ -34,3 +34,9 @@
 [submodule "src/github.com/justprintit/mmf"]
 	path = src/github.com/justprintit/mmf
 	url = ../mmf
+[submodule "src/github.com/99designs/gqlgen"]
+	path = src/github.com/99designs/gqlgen
+	url = https://github.com/99designs/gqlgen
+[submodule "src/github.com/vektah/gqlparser"]
+	path = src/github.com/vektah/gqlparser
+	url = https://github.com/vektah/gqlparser
