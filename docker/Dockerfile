@@ -17,6 +17,10 @@ RUN npm update && npm i -g \
 
 COPY npm.sh /etc/entrypoint.d/
 
+# go generate
+RUN apk --update --no-cache add \
+	flatbuffers
+
 # interactivity
 #
 RUN apk --update --no-cache add \
